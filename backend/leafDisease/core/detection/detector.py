@@ -1,3 +1,4 @@
+from collections import Counter
 import shutil
 import torch
 
@@ -57,4 +58,23 @@ def detect_and_crop(image):
         # Write the cropped image to the output directory
         cv2.imwrite(f"{output_dir}/{random.randrange(1,10000)}.png", crop_img)
 
-    print(mloutput)
+    word_counts = Counter(mloutput)
+    most_common_word = word_counts.most_common(1)[0][0]
+
+    identification_result = most_common_word + \
+        "is the most common identification amount" + \
+        str(word_counts) + " results"
+
+    result = {
+        "Disease Images": {
+            "D": [5411],
+            "I": [5435, 5437],
+            "A": [2155, 5557]
+        },
+        "ResultInfo": identification_result,
+        "Disease Name": most_common_word,
+        "Disease Infomations": "Causal organism: Several fungal species. Symptoms: Seedlings appear healthy initially, but suddenly collapse and die. The stem at the soil line becomes water-soaked and brown. Roots may also be decayed.",
+        "Prevention Method": "Use of treated seeds. Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
+    }
+
+    return result

@@ -2,6 +2,7 @@ from keras.models import load_model
 from PIL import Image, ImageOps
 import numpy as np
 
+
 # Disable scientific notation for clarity
 np.set_printoptions(suppress=True)
 

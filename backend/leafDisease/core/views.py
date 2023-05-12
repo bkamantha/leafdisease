@@ -16,21 +16,10 @@ def detect(request):
         image = Image.open(image_file)
         result = detect_and_crop(image)
 
-        result = {
-            "Disease Images": {
-                "D": [5411],
-                "I": [5435, 5437],
-                "A": [2155, 5557]
-            },
-            "Disease Name": "Damping-off",
-            "Disease Infomations": "Causal organism: Several fungal species. Symptoms: Seedlings appear healthy initially, but suddenly collapse and die. The stem at the soil line becomes water-soaked and brown. Roots may also be decayed.",
-            "Prevention Method": "Use of treated seeds. Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
-        }
-
-        return JsonResponse(result)
+        return JsonResponse(result, safe=False)
 
     else:
-        return JsonResponse("ALL Good")
+        return JsonResponse("Something went wrong.")
 
 
 def info(request):
@@ -45,19 +34,24 @@ def info(request):
 
 
 def saveImages(request, image_type, image_name):
+    if request.method == "GET":
+        if image_type == "D":
+            pil_image = Image.open('core/saveImg/leafDetection/image0.jpg')
 
-    # pil_image = Image.open('core/saveImg/3477.png')
+        elif image_type == "I":
+            pil_image = Image.open(f'core/saveImg/{image_name}.png')
 
-    pil_image = Image.open('core/saveImg/leafDetection/image0.jpg')
+        elif image_type == "A":
+            pil_image = Image.open(f'core/saveImg/{image_name}.png')
 
-    # Convert the Pillow image back to bytes
-    with BytesIO() as buffer:
-        pil_image.save(buffer, format="PNG")
-        image_data = buffer.getvalue()
+        # Convert the Pillow image back to bytes
+        with BytesIO() as buffer:
+            pil_image.save(buffer, format="PNG")
+            image_data = buffer.getvalue()
 
-    # Set the content type of the response to the MIME type of the image
-    content_type = "image/png"
-    response = HttpResponse(content_type=content_type)
-    response.write(image_data)
+        # Set the content type of the response to the MIME type of the image
+        content_type = "image/png"
+        response = HttpResponse(content_type=content_type)
+        response.write(image_data)
 
-    return response
+        return response
