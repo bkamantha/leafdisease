@@ -65,10 +65,22 @@ def detect_and_crop(image):
         "is the most common identification amount" + \
         str(word_counts) + " results"
 
+    folder_path = "core/saveImg/"
+    files = os.listdir(folder_path)
+
+    I = []
+    A = []
+
+    for file_name in files:
+        file_path = os.path.join(folder_path, file_name)
+        if os.path.isfile(file_path):
+            basename = os.path.splitext(file_name)[0]
+            I.append(int(basename))
+
     result = {
         "Disease Images": {
-            "D": [5411],
-            "I": [5435, 5437],
+            "D": [0000],
+            "I": I,
             "A": [2155, 5557]
         },
         "ResultInfo": identification_result,
