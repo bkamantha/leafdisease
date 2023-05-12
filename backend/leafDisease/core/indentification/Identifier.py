@@ -9,7 +9,10 @@ np.set_printoptions(suppress=True)
 model = load_model("core\indentification\Identifier_model.h5", compile=False)
 
 # Load the labels
-class_names = [line.rstrip("\n") for line in open("core\indentification\labels.txt")]
+class_names = [line.rstrip("\n")
+               for line in open("core\indentification\labels.txt")]
+
+result = []
 
 
 def Objidentify(cropImage):
@@ -42,3 +45,7 @@ def Objidentify(cropImage):
     # Print prediction and confidence score
     print("Class:", class_name, end="")
     print("Confidence Score:", confidence_score)
+
+    result.append(class_name)
+
+    return result

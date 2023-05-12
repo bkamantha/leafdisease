@@ -1,0 +1,38 @@
+[
+    {
+        "Disease Images": "None",
+        "Disease Name": "Damping-off",
+        "Disease Infomations": "Causal organism: Several fungal species. Symptoms: Seedlings appear healthy initially, but suddenly collapse and die. The stem at the soil line becomes water-soaked and brown. Roots may also be decayed.",
+        "Prevention Method": "Use of treated seeds. Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
+    },
+    {
+        "Disease Images": "None",
+        "Disease Name": "Collar rot",
+        "Disease Infomations": "Causal organism: Several fungal species. Symptoms: The lower stem and roots turn brown and rot, resulting in wilting, stunted growth, and plant death.",
+        "Prevention Method": "Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area. Crop rotation with non-susceptible crops."
+    },
+    {
+        "Disease Images": "None",
+        "Disease Name": "Fusarium wilt",
+        "Disease Infomations": "Causal organism: Fusarium oxysporum f.sp. melongenae. Symptoms: Stunting, yellowing, and wilting of the plant from bottom to top; leaves turn yellow and may fall off; brown discoloration of the vascular tissue.",
+        "Prevention Method": "Use of resistant varieties. Crop rotation with non-susceptible crops. Use of biocontrol agents and fungicides. Maintain proper sanitation in the growing area."
+    },
+    {
+        "Disease Images": "None",
+        "Disease Name": "Powdery mildew",
+        "Disease Infomations": "Causal organism: Several fungal species. Symptoms: White or gray powdery spots on leaves, stems, and flowers; leaves may curl and distort; plants may become stunted.",
+        "Prevention Method": "Maintain proper air circulation and ventilation. Use of resistant varieties. Use of fungicides and biocontrol agents."
+    },
+    {
+        "Disease Images": "None",
+        "Disease Name": "Anthracnose",
+        "Disease Infomations": "Causal organism: Colletotrichum gloeosporioides. Symptoms: Small, water-soaked lesions that develop into sunken, brown to black spots on leaves, stems, and fruits; leaves may yellow and drop off; fruits may rot.",
+        "Prevention Method": "Use of resistant varieties. Avoid overhead irrigation and promote good air circulation. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
+    },
+    {
+        "Disease Images": "None",
+        "Disease Name": "Phomopsis blight",
+        "Disease Infomations": "Causal organism: Phomopsis vexans. Symptoms: Dark brown, sunken lesions on stems, leaves, and fruits; leaves may yellow and drop off; fruits may rot.",
+        "Prevention Method": "Use of resistant varieties. Avoid overhead irrigation and promote good air circulation. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
+    }
+]
