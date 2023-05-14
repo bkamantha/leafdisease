@@ -56,14 +56,22 @@ def info(request):
 
 def saveImages(request, image_type, image_name):
     if request.method == "GET":
-        if image_type == "D":
-            pil_image = Image.open('core/saveImg/leafDetection/image0.jpg')
 
-        elif image_type == "I":
-            pil_image = Image.open(f'core/saveImg/{image_name}.png')
+        try:
+            if image_type == "D":
+                pil_image = Image.open('core/saveImg/leafDetection/image0.jpg')
 
-        elif image_type == "A":
-            pil_image = Image.open(f'core/saveImg/{image_name}.png')
+            elif image_type == "I":
+                pil_image = Image.open(f'core/saveImg/{image_name}.png')
+
+            elif image_type == "A":
+                pil_image = Image.open(f'core/saveImg/{image_name}.png')
+
+            elif image_type == "F":
+                pil_image = Image.open(f'core/diseaseImg/{image_name}.jpg')
+
+        except:
+            pil_image = Image.open('core/diseaseImg/0000.png')
 
         # Convert the Pillow image back to bytes
         with BytesIO() as buffer:
