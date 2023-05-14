@@ -16,7 +16,28 @@ def detect(request):
         image = Image.open(image_file)
         result = detect_and_crop(image)
 
+        # Save result as a JSON file
+        result_filename = "result.json"
+        result_file_path = os.path.join(
+            "core/", result_filename)
+        with open(result_file_path, "w") as f:
+            json.dump(result, f)
+
         return JsonResponse(result, safe=False)
+
+    elif request.method == "GET":
+
+        # Read saved JSON file and return as JSON response
+        result_filename = "result.json"
+        result_file_path = os.path.join(
+            "core/", result_filename)
+        if os.path.isfile(result_file_path):
+            with open(result_file_path, "r") as f:
+                result = json.load(f)
+
+            return JsonResponse(result, safe=False)
+        else:
+            return JsonResponse("Result not found.")
 
     else:
         return JsonResponse("Something went wrong.")

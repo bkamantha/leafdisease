@@ -17,6 +17,9 @@ def detect_and_crop(image):
         "ultralytics/yolov5", "custom", "core/detection/best.pt", skip_validation=True
     )
 
+    # Set the confidence threshold to 0.4
+    model.conf = 0.4
+
     output_dir = "core/saveImg"
 
     if os.path.exists(output_dir):  # check if the subfolder already exists
