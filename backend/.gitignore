@@ -1,6 +1,5 @@
 .vscode
 backend\leafDisease\.vscode
 backend\leafDisease\core\__pycache__
-backend\leafDisease\core\areaCalculation\__pycache__
-backend\leafDisease\core\__pycache__
 backend\leafDisease\leafDisease\__pycache__
+backend\leafDisease\core\areaCalculation\__pycache__
