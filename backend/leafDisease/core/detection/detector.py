@@ -9,6 +9,7 @@ import numpy as np
 import os
 
 from ..indentification.Identifier import Objidentify
+from ..areaCalculation.leafarea import calculate_leaf_area
 
 
 def detect_and_crop(image):
@@ -26,6 +27,8 @@ def detect_and_crop(image):
         shutil.rmtree(output_dir)  # delete the subfolder and its contents
 
     os.makedirs(output_dir)  # create the subfolder
+    path = os.path.join(output_dir, 'leafarea')
+    os.mkdir(path)
 
     # Run inference on the input image
     results = model(image)
@@ -56,10 +59,16 @@ def detect_and_crop(image):
         crop_img = img[detection[1]: detection[3], detection[0]: detection[2]]
 
         mloutput = Objidentify(crop_img)
+        leaf_area_percentage, masked_image = calculate_leaf_area(crop_img)
+
         number += 1
 
         # Write the cropped image to the output directory
         cv2.imwrite(f"{output_dir}/{random.randrange(1,10000)}.png", crop_img)
+
+        # Write the cropped image to the output directory
+        cv2.imwrite(
+            f"{output_dir}/leafarea/{random.randrange(1,10000)}.png", masked_image)
 
     word_counts = Counter(mloutput)
     most_common_word = word_counts.most_common(1)[0][0]
@@ -80,11 +89,21 @@ def detect_and_crop(image):
             basename = os.path.splitext(file_name)[0]
             I.append(int(basename))
 
+    folder_path = "core/saveImg/leafarea"
+    files = os.listdir(folder_path)
+
+    for file_name in files:
+        file_path = os.path.join(folder_path, file_name)
+        if os.path.isfile(file_path):
+            basename = os.path.splitext(file_name)[0]
+            A.append(int(basename))
+
+    print(A)
     result = {
         "Disease Images": {
             "D": [0000],
             "I": I,
-            "A": [2155, 5557]
+            "A": A
         },
         "ResultInfo": identification_result,
         "Disease Name": most_common_word,
