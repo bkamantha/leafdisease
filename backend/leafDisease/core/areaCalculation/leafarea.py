@@ -43,6 +43,25 @@ def calculate_leaf_area(image_path):
 
     print(total*1.02)
 
+    # Define the text and font properties
+    text = str(round(100-total, 2))
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    font_scale = 0.6
+    font_color = (155, 255, 255)  # White color (BGR format)
+    line_type = cv2.LINE_AA
+
+    # Calculate the size of the text
+    (text_width, text_height), _ = cv2.getTextSize(
+        text, font, font_scale, thickness=2)
+
+    # Set the position of the text
+    x = 10  # X-coordinate
+    y = 10 + text_height  # Y-coordinate
+
+    # Draw the text on the image
+    cv2.putText(highlight_area, text, (x, y), font, font_scale,
+                font_color, thickness=2, lineType=line_type)
+
     return leaf_area_percentage, highlight_area
 
 
