@@ -21,7 +21,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
   Result? result;
   bool isLoading = true;
 
-  final List<String> screenNames = ['Information', 'Scan', 'result'];
+  final List<String> screenNames = ['Information', 'Scan', 'Result'];
 
   @override
   void initState() {
