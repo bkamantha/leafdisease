@@ -19,7 +19,7 @@ def detect_and_crop(image):
     )
 
     # Set the confidence threshold to 0.4
-    model.conf = 0.4
+    model.conf = 0.5
 
     output_dir = "core/saveImg"
 
@@ -52,6 +52,7 @@ def detect_and_crop(image):
 
     # Loop through the detected objects and crop the corresponding regions from the input image
     detections = bbox[:].tolist()
+
     for detection in detections:
         detection = [int(x) for x in detection]
 
@@ -98,7 +99,13 @@ def detect_and_crop(image):
             basename = os.path.splitext(file_name)[0]
             A.append(int(basename))
 
-    print(A)
+    DiseaseInfomations = ""
+    PreventionMethod = ""
+
+    if most_common_word == "Leaf_Hopper_Disease":
+        DiseaseInfomations = "Causal organism: Several fungal species. Symptoms: Seedlings appear healthy initially, but suddenly collapse and die. The stem at the soil line becomes water-soaked and brown. Roots may also be decayed."
+        PreventionMethod = "Use of treated seeds. Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
+
     result = {
         "Disease Images": {
             "D": [0000],
@@ -107,8 +114,7 @@ def detect_and_crop(image):
         },
         "ResultInfo": identification_result,
         "Disease Name": most_common_word,
-        "Disease Infomations": "Causal organism: Several fungal species. Symptoms: Seedlings appear healthy initially, but suddenly collapse and die. The stem at the soil line becomes water-soaked and brown. Roots may also be decayed.",
-        "Prevention Method": "Use of treated seeds. Avoid overwatering and use well-draining soil. Use of fungicides and biocontrol agents. Maintain proper sanitation in the growing area."
-    }
+        "Disease Infomations": DiseaseInfomations,
+        "Prevention Method": PreventionMethod}
 
     return result

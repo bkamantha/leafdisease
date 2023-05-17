@@ -14,7 +14,12 @@ def detect(request):
     if request.method == "POST" and request.FILES.get("image"):
         image_file = request.FILES["image"]
         image = Image.open(image_file)
-        result = detect_and_crop(image)
+
+        try:
+            result = detect_and_crop(image)
+
+        except:
+            result = {}
 
         # Save result as a JSON file
         result_filename = "result.json"
@@ -65,7 +70,8 @@ def saveImages(request, image_type, image_name):
                 pil_image = Image.open(f'core/saveImg/{image_name}.png')
 
             elif image_type == "A":
-                pil_image = Image.open(f'core/saveImg/leafarea/{image_name}.png')
+                pil_image = Image.open(
+                    f'core/saveImg/leafarea/{image_name}.png')
 
             elif image_type == "F":
                 pil_image = Image.open(f'core/diseaseImg/{image_name}.jpg')

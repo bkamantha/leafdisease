@@ -8,22 +8,28 @@ def calculate_leaf_damage(image_path):
     results = model.predict(source=image_path, conf=0.25)
 
     originalImg = results[0].orig_img
-    mask = (results[0].masks.data[0].cpu().numpy() * 255).astype("uint8")
 
-    for i in range(1, len(results[0].masks)):
-        mask += (results[0].masks.data[i].cpu().numpy() * 255).astype("uint8")
+    try:
+        mask = (results[0].masks.data[0].cpu().numpy() * 255).astype("uint8")
 
-    mask = cv2.resize(mask, (originalImg.shape[1], originalImg.shape[0]))
+        for i in range(1, len(results[0].masks)):
+            mask += (results[0].masks.data[i].cpu().numpy()
+                     * 255).astype("uint8")
 
-    num_white_pixels = np.sum(mask == 255)
+        mask = cv2.resize(mask, (originalImg.shape[1], originalImg.shape[0]))
 
-    # Calculate the total number of pixels
-    # total_pixels = mask.shape[0] * mask.shape[1]
+        num_white_pixels = np.sum(mask == 255)
 
-    # Calculate the percentage of white pixels in the image
-    # leaf_area_percentage = num_white_pixels / total_pixels * 100
+        # Calculate the total number of pixels
+        # total_pixels = mask.shape[0] * mask.shape[1]
 
-    masked_image = cv2.bitwise_and(originalImg, originalImg, mask=mask)
+        # Calculate the percentage of white pixels in the image
+        # leaf_area_percentage = num_white_pixels / total_pixels * 100
+
+        masked_image = cv2.bitwise_and(originalImg, originalImg, mask=mask)
+    except:
+        num_white_pixels = 0
+        masked_image = originalImg
 
     return num_white_pixels, masked_image
 
