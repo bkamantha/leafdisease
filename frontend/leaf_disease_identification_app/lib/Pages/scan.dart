@@ -39,7 +39,7 @@ class _ScanPageState extends State<ScanPage> {
       onConfirmBtnTap: () {
         setState(() {
           imageFile = null;
-          Navigator.pop(context);
+          // Navigator.pop(context);
         });
       },
     );
