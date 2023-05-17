@@ -23,6 +23,7 @@ dependencies:
   transparent_image: ^2.0.1
   tab_indicator_styler: ^2.0.0
   google_nav_bar: ^5.0.6
+  quickalert: ^1.0.1
 
 dev_dependencies:
   flutter_test:

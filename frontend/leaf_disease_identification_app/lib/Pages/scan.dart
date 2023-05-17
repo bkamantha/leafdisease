@@ -6,6 +6,7 @@ import 'package:leaf_disease_identification_app/Models/results_class.dart';
 import 'package:leaf_disease_identification_app/Pages/navbar.dart';
 import 'package:leaf_disease_identification_app/Pages/results.dart';
 import 'package:leaf_disease_identification_app/services/services.dart';
+import 'package:quickalert/quickalert.dart';
 
 class ScanPage extends StatefulWidget {
   const ScanPage({
@@ -23,6 +24,26 @@ class _ScanPageState extends State<ScanPage> {
       ImagePicker(); //to save image picker type (gallery/camera)
   String? imgFileName = "";
   XFile? imageFile;
+
+  void showAlert(String text) {
+    QuickAlert.show(
+      context: context,
+      type: QuickAlertType.error,
+      title: 'Oops...',
+      backgroundColor: Colors.white,
+      textColor: Colors.black,
+      titleColor: Colors.black,
+      text: '${text.toString()} !!',
+      autoCloseDuration: const Duration(seconds: 5),
+      confirmBtnColor: Colors.black,
+      onConfirmBtnTap: () {
+        setState(() {
+          imageFile = null;
+          Navigator.pop(context);
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,21 +140,24 @@ class _ScanPageState extends State<ScanPage> {
                     });
                     Services().imageUploadService(imageFile).then((val) async {
                       if (val.data != null) {
-                        result = Result.fromJson(val.data);
-                        // widget.navigatorKey.currentState!.push(
-                        //   MaterialPageRoute(
-                        //     builder: (BuildContext context) =>
-                        //         ResultPage(result: result),
-                        //   ),
-                        // );
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => ResultPage(
-                              result: result,
+                        if (val.data["status"] == 'null') {
+                          showAlert(
+                              "Identification Failed, Please uplod another image");
+                          setState(() {
+                            imageFile = null;
+                          });
+                        } else {
+                          result = Result.fromJson(val.data);
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ResultPage(
+                                result: result,
+                              ),
                             ),
-                          ),
-                        );
+                          );
+                        }
                       } else {
                         Fluttertoast.showToast(
                           msg:

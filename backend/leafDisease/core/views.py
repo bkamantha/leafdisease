@@ -19,7 +19,7 @@ def detect(request):
             result = detect_and_crop(image)
 
         except:
-            result = {}
+            result = {"status":"null"}
 
         # Save result as a JSON file
         result_filename = "result.json"
