@@ -15,7 +15,7 @@ class NavBar extends StatefulWidget {
 
 class _NavBarState extends State<NavBar> {
   Services services = Services();
-  late Result result;
+  late final Result result;
   bool isLoading = true;
 
   @override
@@ -108,14 +108,18 @@ class _NavBarState extends State<NavBar> {
               ),
             ),
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ResultPage(
-                    result: result,
+              BuildContext context =
+                  this.context; // Store the BuildContext in a separate variable
+              _fetchResults().then((_) {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultPage(
+                      result: result,
+                    ),
                   ),
-                ),
-              );
+                );
+              });
             },
             selectedColor: Colors.black,
           ),

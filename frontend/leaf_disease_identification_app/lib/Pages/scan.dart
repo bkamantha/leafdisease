@@ -39,10 +39,6 @@ class _ScanPageState extends State<ScanPage> {
       onConfirmBtnTap: () {
         setState(() {
           imageFile = null;
-<<<<<<< HEAD
-=======
-          // Navigator.pop(context);
->>>>>>> a9d80773d6e15b6021c73a7d0e60411d1fa43267
         });
       },
     );
@@ -151,7 +147,10 @@ class _ScanPageState extends State<ScanPage> {
                           });
                         } else {
                           result = Result.fromJson(val.data);
-
+                          setState(() {
+                            isLoding =
+                                false; // set the boolean flag back to false to hide the progress indicator
+                          });
                           Navigator.push(
                             context,
                             MaterialPageRoute(

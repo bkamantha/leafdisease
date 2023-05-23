@@ -22,6 +22,7 @@ class _ResultPageState extends State<ResultPage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    debugPrint(widget.result.diseaseInformations);
     final TabController tabController = TabController(length: 2, vsync: this);
     List<int> imageListI = widget.result.diseaseImages.i;
     List<int> imageListA = widget.result.diseaseImages.a;
@@ -240,20 +241,24 @@ class _ResultPageState extends State<ResultPage> with TickerProviderStateMixin {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             ExpandedWidget(
-                              textTitle: "Disease Infomations",
-                              text: widget.result.diseaseInformations,
+                              textTitle: "Disease Informations",
+                              text: widget.result.diseaseInformations ?? "",
                             ),
                             ExpandedWidget(
                               textTitle: "Prevention Method",
-                              text: widget.result.preventionMethod,
+                              text: widget.result.preventionMethod ?? "",
                             ),
                             ExpandedWidget(
                               textTitle: "Result Info",
-                              text: widget.result.resultInfo,
+                              text: widget.result.resultInfo ?? "",
                             ),
                             ExpandedWidget(
                               textTitle: "Facebook Comments",
-                              text: widget.result.faceBookComments,
+                              text: widget.result.comments != null
+                                  ? widget.result.comments!
+                                      .map((comment) => '\u2022 $comment')
+                                      .join(",\n\n")
+                                  : "No Comments",
                             ),
                           ],
                         ),

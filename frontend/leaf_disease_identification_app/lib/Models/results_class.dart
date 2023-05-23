@@ -4,10 +4,10 @@ class Result {
   final String? diseaseName;
   final String? diseaseInformations;
   final String? preventionMethod;
-  final String? faceBookComments;
+  final List<String>? comments;
 
   Result({
-    required this.faceBookComments,
+    required this.comments,
     required this.diseaseImages,
     required this.resultInfo,
     required this.diseaseName,
@@ -15,22 +15,30 @@ class Result {
     required this.preventionMethod,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
-        diseaseImages: DiseaseImages.fromJson(json["Disease Images"]),
-        resultInfo: json["ResultInfo"],
-        diseaseName: json["Disease Name"],
-        diseaseInformations: json["Disease Infomations"],
-        preventionMethod: json["Prevention Method"],
-        faceBookComments: json["Comments"],
-      );
+  factory Result.fromJson(Map<String, dynamic> json) {
+    return Result(
+      diseaseImages: DiseaseImages.fromJson(json["Disease Images"]),
+      resultInfo: json["ResultInfo"],
+      diseaseName: json["Disease Name"],
+      diseaseInformations: json["Disease Infomations"],
+      preventionMethod: json["Prevention Method"],
+      comments: json["Comments"] != null
+          ? List<String>.from(json["Comments"].map((x) => x))
+          : null,
+    );
+  }
 
-  Map<String, dynamic> toJson() => {
-        "Disease Images": diseaseImages.toJson(),
-        "ResultInfo": resultInfo,
-        "Disease Name": diseaseName,
-        "Disease Infomations": diseaseInformations,
-        "Prevention Method": preventionMethod,
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      "Disease Images": diseaseImages.toJson(),
+      "ResultInfo": resultInfo,
+      "Disease Name": diseaseName,
+      "Disease Informations": diseaseInformations,
+      "Prevention Method": preventionMethod,
+      "Comments":
+          comments != null ? List<dynamic>.from(comments!.map((x) => x)) : null,
+    };
+  }
 }
 
 class DiseaseImages {

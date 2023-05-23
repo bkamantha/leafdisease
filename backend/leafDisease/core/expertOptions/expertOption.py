@@ -4,16 +4,17 @@ from .processcomments import commentProcess
 
 app_id = "561867056093423"
 app_secret = "16d61a01ae22b07fcc90ae896b6c8ea2"
-access_token = "EAAWqItKEIi0BAO6WRWIZBBu28AZAptKZAf8ZAUB65z8n4eLxA3zgNhwGV3ZBi8o5nE1MkKwErclF8LJgweA9pcoX2mDyLxgmc3IijPabe9ahA6TSdbW2N9Yu8JkpLFmn3sqKAAZBCvIqMsuyiYNvWK6hEjWh41ilZBZAtYYq5128gOEVbvXV1GHq8LojovAZAlcygR5qaZCnWeGTf86BGEDwEHC9aKW1lztx6ft85WWYI73l6tmoMGrGyaAot4p2j0qP0XSiCthWLREAZDZD"
+access_token = "EAAWqItKEIi0BANbjrIsWZBlegOKFOANKQTRev5vPXKusZB5XT7RIEGfiioJTtCyVq1XiXVupq0NZCbaEBq4cm8V7h7OVvbrNsqa2LXZBWhFamJHuhSsGWX54j2T54fVH02TZB8ZC8rZCOypvOzcOMAHyofTdcg5cKrABcHWD18nboJvCSMqJUvngl7duyJnticqFdTSCWldFVfzYjd2uOlZC65dfQQnpxcMZD"
 
 group_id = "259384986463276"
 
 group_url = "https://www.facebook.com/groups/259384986463276"
 
-allcomments = []
+
 
 
 def fbcomment(post_id):
+    allcomments = []
     graph = facebook.GraphAPI(access_token=access_token, version="3.0")
 
     post_id = "6179812755466992"

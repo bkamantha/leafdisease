@@ -22,11 +22,16 @@ class _ExpandedWidgetState extends State<ExpandedWidget> {
   @override
   void initState() {
     super.initState();
-    if (widget.text!.length > 100) {
-      firstHalf = widget.text!.substring(0, 100);
-      secondHalf = widget.text!.substring(100, widget.text!.length);
+    if (widget.text != null && widget.text!.isNotEmpty) {
+      if (widget.text!.length > 100) {
+        firstHalf = widget.text!.substring(0, 100);
+        secondHalf = widget.text!.substring(100, widget.text!.length);
+      } else {
+        firstHalf = widget.text!;
+        secondHalf = "";
+      }
     } else {
-      firstHalf = widget.text!;
+      firstHalf = "";
       secondHalf = "";
     }
   }
