@@ -48,7 +48,7 @@ def detect(request):
                         pass
                 except:
                     # Append new data to existing data
-                    result.update({"comments": comments})
+                    result.update({"Comments": comments})
                     print(result)
 
             return JsonResponse(result, safe=False)

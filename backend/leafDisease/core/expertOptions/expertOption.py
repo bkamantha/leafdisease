@@ -1,6 +1,6 @@
 import facebook
 
-# from .processcomments import commentProcess
+from .processcomments import commentProcess
 
 app_id = "561867056093423"
 app_secret = "16d61a01ae22b07fcc90ae896b6c8ea2"
@@ -26,7 +26,7 @@ def fbcomment(post_id):
         # print(comment["message"])
         allcomments.append(comment["message"])
         # Process the comment
-        # processed_comment = commentProcess(comment["message"])
+        processed_comment = commentProcess(comment["message"])
 
     return allcomments
 

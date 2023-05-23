@@ -3,14 +3,12 @@ import pickle
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 # Load the saved model
-model = tf.keras.models.load_model(
-    "backend/leafDisease/core/expertOptions/commentAnalysis.h5"
-)
+model = tf.keras.models.load_model("core\\expertOptions\\commentAnalysis.h5")
 
-with open("backend/leafDisease/core/expertOptions/tokenizer.pickle", "rb") as handle:
+with open("core\\expertOptions\\tokenizer.pickle", "rb") as handle:
     tokenizer = pickle.load(handle)
 
-with open("backend/leafDisease/core/expertOptions/max_len.pickle", "rb") as handle:
+with open("core\\expertOptions\\max_len.pickle", "rb") as handle:
     max_len = pickle.load(handle)
 
 
