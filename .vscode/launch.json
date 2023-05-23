@@ -1,0 +1,28 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "leaf_disease_identification_app",
+            "cwd": "frontend\\leaf_disease_identification_app",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "leaf_disease_identification_app (profile mode)",
+            "cwd": "frontend\\leaf_disease_identification_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "leaf_disease_identification_app (release mode)",
+            "cwd": "frontend\\leaf_disease_identification_app",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}

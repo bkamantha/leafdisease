@@ -19,7 +19,7 @@ def detect_and_crop(image):
     )
 
     # Set the confidence threshold to 0.4
-    model.conf = 0.5
+    model.conf = 0.3
 
     output_dir = "core/saveImg"
 

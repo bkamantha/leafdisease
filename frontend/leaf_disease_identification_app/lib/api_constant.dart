@@ -9,7 +9,8 @@ class ApiConstants {
   /*######also note that run your django bakend using 
   "manage.py runserver 0.0.0.0:8000"  #######*/
 
-  static const String ipv4Address = "10.0.2.2";
+  // static const String ipv4Address = "10.0.2.2";
+  static const String ipv4Address = "192.168.1.4";
 
   static const String bASEURL = 'http://$ipv4Address:8000/detection/';
 }
