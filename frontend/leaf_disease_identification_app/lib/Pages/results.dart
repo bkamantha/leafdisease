@@ -251,6 +251,10 @@ class _ResultPageState extends State<ResultPage> with TickerProviderStateMixin {
                               textTitle: "Result Info",
                               text: widget.result.resultInfo,
                             ),
+                            ExpandedWidget(
+                              textTitle: "Facebook Comments",
+                              text: widget.result.faceBookComments,
+                            ),
                           ],
                         ),
                       ),
