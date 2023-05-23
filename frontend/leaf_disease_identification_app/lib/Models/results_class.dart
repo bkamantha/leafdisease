@@ -4,8 +4,10 @@ class Result {
   final String? diseaseName;
   final String? diseaseInformations;
   final String? preventionMethod;
+  final String? faceBookComments;
 
   Result({
+    required this.faceBookComments,
     required this.diseaseImages,
     required this.resultInfo,
     required this.diseaseName,
@@ -19,6 +21,7 @@ class Result {
         diseaseName: json["Disease Name"],
         diseaseInformations: json["Disease Infomations"],
         preventionMethod: json["Prevention Method"],
+        faceBookComments: json["Comments"],
       );
 
   Map<String, dynamic> toJson() => {

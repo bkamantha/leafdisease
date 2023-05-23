@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
       home: Scaffold(
         drawer: const NavBar(),
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Information',
           ),
           backgroundColor: Colors.black,

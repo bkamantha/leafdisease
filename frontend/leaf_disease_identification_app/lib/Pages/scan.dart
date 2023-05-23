@@ -39,7 +39,6 @@ class _ScanPageState extends State<ScanPage> {
       onConfirmBtnTap: () {
         setState(() {
           imageFile = null;
-          Navigator.pop(context);
         });
       },
     );
@@ -55,7 +54,7 @@ class _ScanPageState extends State<ScanPage> {
       home: Scaffold(
         drawer: const NavBar(),
         appBar: AppBar(
-          title: Text('Scan'),
+          title: const Text('Scan'),
           backgroundColor: Colors.black,
         ),
         body: SafeArea(
@@ -108,9 +107,9 @@ class _ScanPageState extends State<ScanPage> {
                             : FileImage(File(imageFile!.path)) as ImageProvider,
                       ),
                     ),
-                    child: Column(
+                    child: const Column(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
+                      children: [
                         Icon(
                           Icons.camera_alt,
                           color: Colors.black87,
